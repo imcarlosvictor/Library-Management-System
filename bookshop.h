@@ -6,7 +6,8 @@ struct Book
 {
   std::string title;
   std::string author;
-  std::string genre;
+  // Option to store multiple genres
+  std::vector<std::string> genre;
   int year_published;
   int id;
 };
