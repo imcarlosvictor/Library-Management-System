@@ -13,7 +13,6 @@ struct Book
 };
 
 void ShowRecords(std::vector<struct Book>);
-void CheckAvailability();
 void AddBook(std::vector<struct Book>&);
-void ModifyRecords();
-void DeleteRecord();
+void ModifyRecords(std::vector<struct Book>&);
+void DeleteRecord(std::vector<struct Book>&);

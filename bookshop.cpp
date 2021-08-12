@@ -21,11 +21,6 @@ void ShowRecords(std::vector<struct Book> lib_records)
   }
 }
 
-void CheckAvailability()
-{
-
-}
-
 void AddBook(std::vector<struct Book>& lib_records)
 {
   std::string title;
@@ -73,27 +68,72 @@ void AddBook(std::vector<struct Book>& lib_records)
   }
   new_record.genre.push_back(genre);
 
-  // Print new object
-  std::cout << "New record: \n";
-  std::cout << new_record.title << std::endl;
-  std::cout << new_record.author << std::endl;
-  for (int i=0; i<new_record.genre.size(); ++i) {
-    std::cout << new_record.genre[i] << " ";
-  }
-  std::cout << std::endl;
-  std::cout << new_record.year_published << std::endl;
-  std::cout << new_record.id << std::endl;
-
   // Add to library records
   lib_records.push_back(new_record);
+
+  // Print new object
+  std::cout << "Successfully created record" << std::endl;
 }
 
-void ModifyRecords()
+void ModifyRecords(std::vector<struct Book>& lib_records)
 {
+  std::cout << "Enter Book ID: ";
+  int book_id;
+  std::cin >> book_id;
+
+  int index;
+  for (int i=0; i<lib_records.size() ; ++i) {
+    if (lib_records[i].id == book_id) {
+      index = i;
+      // Print information
+      std::cout << "\n|~~ RECORD: " << i << " ~~" << std::endl;
+      std::cout << "|ID: " << lib_records[i].id << std::endl;
+      std::cout << "|TITLE: " << lib_records[i].title << std::endl;
+      std::cout << "|AUTHOR: " << lib_records[i].author << std::endl;
+      std::cout << "|PUBLISHED: " << lib_records[i].year_published << std::endl;
+
+      // Print all the elements stored in the array
+      std::cout << "|GENRE: ";
+      for (auto i : lib_records[i].genre) {
+        std::cout << i << " ";
+      }
+      std::cout << std::endl;
+    }
+  }
+
+  // Delete record being modified
+  lib_records.erase(lib_records.begin() + index);
+
+  // Call to create a new record
+  AddBook(lib_records);
 
 }
 
-void DeleteRecord()
+void DeleteRecord(std::vector<struct Book>& lib_records)
 {
+  std::cout << "Enter Book ID: ";
+  int book_id;
+  std::cin >> book_id;
 
+  int index;
+  for (int i=0; i<lib_records.size(); ++i) {
+    if (lib_records[i].id == book_id) {
+      index = i;
+      // Print information
+      std::cout << "\n|~~ RECORD: " << i << " ~~" << std::endl;
+      std::cout << "|ID: " << lib_records[i].id << std::endl;
+      std::cout << "|TITLE: " << lib_records[i].title << std::endl;
+      std::cout << "|AUTHOR: " << lib_records[i].author << std::endl;
+      std::cout << "|PUBLISHED: " << lib_records[i].year_published << std::endl;
+    }
+  }
+
+  std::cout << "Are you sure you want to delete this record? (y/n): ";
+  char answer;
+  std::cin >> answer;
+
+  if (answer == 'y') {
+    lib_records.erase(lib_records.begin() + index);
+    std::cout << "Successfully deleted record" << std::endl;
+  }
 }
