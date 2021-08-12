@@ -14,11 +14,10 @@ int main()
     std::cout << "|\t\tLIBRARY MANAGEMENT SYSTEM\t\t|\n";
     std::cout << "|-------------------------------------------------------|\n";
     std::cout << "|\t\t1. Show Book Records\t\t\t|\n";
-    std::cout << "|\t\t2. Check Availability\t\t\t|\n";
-    std::cout << "|\t\t3. Add Book Records\t\t\t|\n";
-    std::cout << "|\t\t4. Modify Book Records\t\t\t|\n";
-    std::cout << "|\t\t5. Delete Book Records\t\t\t|\n";
-    std::cout << "|\t\t6. Exit\t\t\t\t\t|\n";
+    std::cout << "|\t\t2. Add Book Records\t\t\t|\n";
+    std::cout << "|\t\t3. Modify Book Records\t\t\t|\n";
+    std::cout << "|\t\t4. Delete Book Records\t\t\t|\n";
+    std::cout << "|\t\t5. Exit\t\t\t\t\t|\n";
     std::cout << "|-------------------------------------------------------|\n";
 
     // User Decision
@@ -31,18 +30,15 @@ int main()
         ShowRecords(library_records);
         break;
       case 2:
-        CheckAvailability();
-        break;    
-      case 3:
         AddBook(library_records);
         break;
+      case 3:
+        ModifyRecords(library_records);
+        break;
       case 4:
-        ModifyRecords();
+        DeleteRecord(library_records);
         break;
       case 5:
-        DeleteRecord();
-        break;
-      case 6:
         break;
       default:
         std::cout << "Enter an valid option";
