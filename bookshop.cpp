@@ -5,12 +5,19 @@
 
 void ShowRecords(std::vector<struct Book> lib_records)
 {
-  std::cout << "\n|---------------------------------------------------------------------------------------------------------------------------------|\n";
-  std::cout << "|\tBook ID\t\t|\tTitle\t\t|\tAuthor\t\t|\tYear Published\t\t|\tDate Added\t  |\n";
-  std::cout << "|---------------------------------------------------------------------------------------------------------------------------------|\n";
+  for (int i=0; i<lib_records.size(); ++i) {
+    std::cout << "\n|~~ RECORD: " << i << " ~~" << std::endl;
+    std::cout << "|ID: " << lib_records[i].id << std::endl;
+    std::cout << "|TITLE: " << lib_records[i].title << std::endl;
+    std::cout << "|AUTHOR: " << lib_records[i].author << std::endl;
+    std::cout << "|PUBLISHED: " << lib_records[i].year_published << std::endl;
 
-  for ( auto i : lib_records ) {
-    std::cout << "|\t" << i.id << "\t|\t" << "|\t"<< i.title << "\t\t|\t" << i.author << "\t|\t" << i.year_published << "\t|\t";
+    // Print all the elements stored in the array
+    std::cout << "|GENRE: ";
+    for (auto i : lib_records[i].genre) {
+      std::cout << i << " ";
+    }
+    std::cout << std::endl;
   }
 }
 
@@ -28,6 +35,7 @@ void AddBook(std::vector<struct Book>& lib_records)
   int book_ID;
   
   // Title
+  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
   std::cout << "\nTitle: ";
   std::getline(std::cin, title, '\n');
   std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
